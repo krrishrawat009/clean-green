@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Systems Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h1 {
+            padding: 0 20px 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #3498db;
+            margin-bottom: 20px;
+        }
+
+        .student-info {
+            padding: 0 20px 20px;
+            font-size: 0.9em;
+            color: #bdc3c7;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 20px;
+        }
+
+        .student-info p {
+            margin: 5px 0;
+        }
+
+        .student-info strong {
+            color: #3498db;
+        }
+
+        .sidebar nav a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar nav a:hover, .sidebar nav a.active {
+            background: #34495e;
+            border-left-color: #3498db;
+            padding-left: 25px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            padding: 40px;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .diagram {
+            background: #ecf0f1;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #bdc3c7;
+        }
+
+        .block {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+
+        .arrow {
+            text-align: center;
+            color: #3498db;
+            font-size: 24px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .explanation {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            line-height: 1.8;
+            margin-top: 20px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .home-section {
+            text-align: center;
+        }
+
+        .home-section h2 {
+            border: none;
+            margin-bottom: 30px;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .activity-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .activity-card h3 {
+            color: white;
+            margin: 0 0 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Energy Portfolio</h1>
+        <div class="student-info">
+            <p><strong>Name:</strong> Krishna Rawat</p>
+            <p><strong>Reg No:</strong> RA2311030010088</p>
+            <p><strong>Section:</strong> Y-1</p>
+        </div>
+        <nav>
+            <a href="#" class="nav-link active" data-section="home">Home</a>
+            <a href="#" class="nav-link" data-section="activity1">Activity 1</a>
+            <a href="#" class="nav-link" data-section="activity2">Activity 2</a>
+            <a href="#" class="nav-link" data-section="activity3">Activity 3</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <!-- Home Section -->
+        <div id="home" class="content-section active home-section">
+            <h2>Energy Systems Portfolio</h2>
+            <p style="font-size: 1.2em; color: #555; margin-bottom: 10px;">
+                <strong>Krishna Rawat</strong> | RA2311030010088 | Section Y-1
+            </p>
+            <p style="font-size: 1.1em; color: #666; margin-bottom: 30px;">
+                Welcome to my energy systems portfolio. This website showcases three innovative energy conversion projects.
+            </p>
+            <div class="activity-grid">
+                <div class="activity-card" onclick="navigateTo('activity1')">
+                    <h3>Activity 1</h3>
+                    <p>Solar Photovoltaic System</p>
+                </div>
+                <div class="activity-card" onclick="navigateTo('activity2')">
+                    <h3>Activity 2</h3>
+                    <p>Wind Energy Conversion</p>
+                </div>
+                <div class="activity-card" onclick="navigateTo('activity3')">
+                    <h3>Activity 3</h3>
+                    <p>Hydroelectric Power Generation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity 1 -->
+        <div id="activity1" class="content-section">
+            <h2>Activity 1: Solar Photovoltaic System</h2>
+            
+            <h3>System Architecture</h3>
+            <div class="diagram">
+                <div class="block">Solar Radiation (Photons)</div>
+                <div class="arrow">↓</div>
+                <div class="block">Photovoltaic Panels (PV Cells)</div>
+                <div class="arrow">↓</div>
+                <div class="block">DC Electricity Generation</div>
+                <div class="arrow">↓</div>
+                <div class="block">Power Inverter (DC to AC Conversion)</div>
+                <div class="arrow">↓</div>
+                <div class="block">AC Electricity Distribution</div>
+                <div class="arrow">↓</div>
+                <div class="block">Grid Connection / Battery Storage / Load</div>
+            </div>
+
+            <h3>System Explanation</h3>
+            <div class="explanation">
+                <p><strong>Source of Energy:</strong> The primary energy source is solar radiation from the sun, which provides approximately 1000 watts per square meter of energy at peak conditions. This renewable energy source is abundant and freely available, making it an ideal candidate for sustainable power generation.</p>
+                
+                <p><strong>Conversion Process:</strong> Photovoltaic cells within solar panels utilize the photovoltaic effect to convert sunlight directly into electrical energy. When photons strike the semiconductor material (typically silicon), they excite electrons, creating electron-hole pairs. This generates direct current (DC) electricity. The DC output is then converted to alternating current (AC) through an inverter, making it compatible with standard electrical grids and household appliances.</p>
+                
+                <p><strong>Output and Utilization:</strong> The system produces clean electrical energy ranging from a few kilowatts for residential installations to megawatts for utility-scale solar farms. This electricity can power homes, businesses, and industrial facilities. Excess energy can be stored in battery systems or fed back into the electrical grid through net metering arrangements.</p>
+                
+                <p><strong>Real-world Application:</strong> Solar PV systems are increasingly deployed worldwide for residential rooftop installations, commercial buildings, and large-scale solar farms. They significantly reduce dependence on fossil fuels, lower electricity bills, and contribute to carbon emission reduction goals. Countries like India are rapidly expanding solar capacity to meet renewable energy targets and provide electricity access to remote areas.</p>
+            </div>
+        </div>
+
+        <!-- Activity 2 -->
+        <div id="activity2" class="content-section">
+            <h2>Activity 2: Wind Energy Conversion System</h2>
+            
+            <h3>System Architecture</h3>
+            <div class="diagram">
+                <div class="block">Wind Kinetic Energy</div>
+                <div class="arrow">↓</div>
+                <div class="block">Wind Turbine Blades (Aerodynamic Capture)</div>
+                <div class="arrow">↓</div>
+                <div class="block">Mechanical Rotation (Shaft)</div>
+                <div class="arrow">↓</div>
+                <div class="block">Gearbox (Speed Multiplication)</div>
+                <div class="arrow">↓</div>
+                <div class="block">Electrical Generator</div>
+                <div class="arrow">↓</div>
+                <div class="block">Power Conditioning Unit</div>
+                <div class="arrow">↓</div>
+                <div class="block">Grid Connection / Energy Storage</div>
+            </div>
+
+            <h3>System Explanation</h3>
+            <div class="explanation">
+                <p><strong>Source of Energy:</strong> Wind energy originates from atmospheric air movement caused by uneven solar heating of Earth's surface, creating pressure differences. Wind represents a vast renewable energy resource with kinetic energy proportional to the cube of wind velocity, making high-wind locations particularly valuable for energy generation.</p>
+                
+                <p><strong>Conversion Process:</strong> Wind turbine blades are aerodynamically designed to capture wind's kinetic energy and convert it into rotational mechanical energy. The rotating shaft drives a gearbox that increases rotational speed to match the generator's requirements. The generator, typically a synchronous or asynchronous machine, converts this mechanical rotation into electrical energy through electromagnetic induction. Modern turbines use sophisticated control systems to optimize blade pitch and yaw orientation for maximum efficiency across varying wind conditions.</p>
+                
+                <p><strong>Output and Utilization:</strong> Modern wind turbines generate between 2-15 megawatts of electrical power depending on their size and wind conditions. This electricity is conditioned to match grid frequency and voltage specifications before distribution. Wind farms can collectively produce hundreds of megawatts, powering thousands of homes and contributing significantly to regional electricity grids.</p>
+                
+                <p><strong>Real-world Application:</strong> Wind energy systems are deployed extensively in both onshore and offshore installations globally. They provide clean, cost-effective electricity generation with minimal environmental impact. Wind farms in Tamil Nadu, Gujarat, and Rajasthan demonstrate India's commitment to renewable energy. Offshore wind farms, though more expensive, offer consistent high-speed winds and reduced visual impact, representing the future of wind energy expansion.</p>
+            </div>
+        </div>
+
+        <!-- Activity 3 -->
+        <div id="activity3" class="content-section">
+            <h2>Activity 3: Hydroelectric Power Generation</h2>
+            
+            <h3>System Architecture</h3>
+            <div class="diagram">
+                <div class="block">Water Reservoir (Potential Energy)</div>
+                <div class="arrow">↓</div>
+                <div class="block">Penstock (Water Flow Channel)</div>
+                <div class="arrow">↓</div>
+                <div class="block">High-Velocity Water Jet (Kinetic Energy)</div>
+                <div class="arrow">↓</div>
+                <div class="block">Hydraulic Turbine (Francis/Kaplan/Pelton)</div>
+                <div class="arrow">↓</div>
+                <div class="block">Mechanical Shaft Rotation</div>
+                <div class="arrow">↓</div>
+                <div class="block">Synchronous Generator</div>
+                <div class="arrow">↓</div>
+                <div class="block">Transformer & Transmission System</div>
+            </div>
+
+            <h3>System Explanation</h3>
+            <div class="explanation">
+                <p><strong>Source of Energy:</strong> The primary energy source is water stored at elevation in natural or artificial reservoirs, possessing gravitational potential energy. This energy originates from the hydrological cycle driven by solar energy, which evaporates water, forms clouds, and creates precipitation that fills reservoirs, making hydroelectric power indirectly solar-powered and completely renewable.</p>
+                
+                <p><strong>Conversion Process:</strong> Water flows from the reservoir through penstocks, converting potential energy into kinetic energy as it accelerates. This high-velocity water strikes turbine blades, causing rotation and transferring kinetic energy to mechanical energy. The turbine type (Pelton for high heads, Francis for medium heads, Kaplan for low heads) is selected based on site-specific head and flow characteristics. The turbine shaft directly couples to a synchronous generator that produces electrical energy through electromagnetic induction at grid frequency.</p>
+                
+                <p><strong>Output and Utilization:</strong> Hydroelectric plants generate substantial power output ranging from small micro-hydro installations (less than 100 kW) to massive facilities exceeding 10,000 MW. The electricity generated is stepped up through transformers for long-distance transmission with minimal losses. Hydroelectric systems offer excellent load-following capability, making them ideal for peak demand management and grid stabilization alongside base load generation.</p>
+                
+                <p><strong>Real-world Application:</strong> Hydroelectric power represents one of the most mature and reliable renewable energy technologies, providing approximately 16% of global electricity. Major installations like the Three Gorges Dam in China and India's Bhakra Nangal Dam demonstrate the technology's scale and importance. Beyond electricity generation, hydroelectric facilities provide irrigation, flood control, and water supply benefits. Pumped storage hydroelectric systems enable large-scale energy storage, addressing the intermittency challenges of other renewable sources and enhancing overall grid reliability.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.content-section');
+
+        function navigateTo(sectionId) {
+            sections.forEach(section => section.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('data-section');
+                navigateTo(sectionId);
+            });
+        });
+    </script>
+</body>
+</html>
